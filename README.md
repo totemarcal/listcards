@@ -28,7 +28,7 @@ O acesso a API utilizamos o retrofit para criar um cliente HTTP.
 Utilizado para vinculação de views do layout
 
 # Testes
-Utilizamos a api mockk para fazer o mock nos objetos, cucumber para nosso cenários de teste, junit para implementar os testes e espresso para teste de UI.
+Utilizamos a api mockk para fazer o mock nos objetos e junit e coroutines para implementar os testes.
 
 
 
