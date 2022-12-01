@@ -1,4 +1,4 @@
-package com.example.listcards.domain.usescases
+package com.example.listcards.domain.usecases
 
 import com.example.listcards.helper.domain.UseCase
 import com.example.listcards.domain.model.Cards

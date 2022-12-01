@@ -6,7 +6,7 @@ import com.example.listcards.data.model.CardsResponse
 import com.example.listcards.data.model.toCard
 import com.example.listcards.domain.model.Cards
 import com.example.listcards.domain.repositories.CardsRepository
-import com.example.listcards.domain.usescases.GetCard
+import com.example.listcards.domain.usecases.GetCard
 import com.example.listcards.helper.ResultX
 import io.mockk.coEvery
 import io.mockk.mockk
@@ -32,7 +32,7 @@ class GetCardTest {
     }
 
     @Test
-    fun testPegarListaEvents () = runBlocking {
+    fun testGetListCards () = runBlocking {
         val listResponse = listOf(
             CardsResponse(cardId = "EX1_323h",
                 dbfId = 492,
@@ -52,20 +52,16 @@ class GetCardTest {
                 text = ""))
         val resultX : ResultX<List<Cards>> = ResultX.Success(listResponse.map { it.toCard() })
         coEvery { mockRepository.getHeros() } returns resultX
-        //act
-        val carros = getC.invoke()
-        //assert
-        assertTrue(carros is ResultX.Success)
-        assertEquals(carros,resultX)
+        val cards = getC.invoke()
+        assertTrue(cards is ResultX.Success)
+        assertEquals(cards,resultX)
     }
 
     @Test
-    fun testErroPegarListaEvent () = runBlocking {
+    fun testErrorGetListCards () = runBlocking {
         val result = ResultX.Failure<List<Cards>>(GetCardException())
         coEvery { mockRepository.getHeros() } returns result
-        //  act
-        val carros = getC.invoke()
-        //assert
-        assertEquals(carros,result)
+        val cards = getC.invoke()
+        assertEquals(cards,result)
     }
 }
