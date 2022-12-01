@@ -52,34 +52,34 @@ class SecondFragment : Fragment() {
         binding.tvDetails?.text = cardUiModel?.name
         binding.textType?.text = getString(R.string.type) + cardUiModel?.type
         binding.textAttack?.also {
-            it?.text = getString(R.string.attack) + cardUiModel?.attack
-            it?.visibility = if(cardUiModel?.attack == null) View.GONE else View.VISIBLE
+            it.text = getString(R.string.attack) + cardUiModel?.attack
+            it.visibility = if(cardUiModel?.attack == null) View.GONE else View.VISIBLE
         }
         binding.textCardSet.also {
-            it?.text = getString(R.string.cardset) + cardUiModel?.cardSet
-            it?.visibility = if(cardUiModel?.cardSet == null) View.GONE else View.VISIBLE
+            it.text = getString(R.string.cardset) + cardUiModel?.cardSet
+            it.visibility = if(cardUiModel?.cardSet == null) View.GONE else View.VISIBLE
         }
         binding.textText.also {
-            it?.text = cardUiModel?.text?.let { it2 ->
+            it.text = cardUiModel?.text?.let { it2 ->
                 HtmlCompat.fromHtml(it2, HtmlCompat.FROM_HTML_MODE_LEGACY);
             }
-            it?.visibility = if(cardUiModel?.text == null) View.GONE else View.VISIBLE
+            it.visibility = if(cardUiModel?.text == null) View.GONE else View.VISIBLE
         }
         binding.textCost.also {
-            it?.text = getString(R.string.cost) + cardUiModel?.cost
-            it?.visibility = if(cardUiModel?.cost == null) View.GONE else View.VISIBLE
+            it.text = getString(R.string.cost) + cardUiModel?.cost
+            it.visibility = if(cardUiModel?.cost == null) View.GONE else View.VISIBLE
         }
         binding.textRarity.also {
-            it?.text = getString(R.string.rarity) + cardUiModel?.rarity
-            it?.visibility = if(cardUiModel?.rarity == null) View.GONE else View.VISIBLE
+            it.text = getString(R.string.rarity) + cardUiModel?.rarity
+            it.visibility = if(cardUiModel?.rarity == null) View.GONE else View.VISIBLE
         }
         binding.textHealth.also {
-            it?.text = getString(R.string.health) + cardUiModel?.health
-            it?.visibility = if(cardUiModel?.health == null) View.GONE else View.VISIBLE
+            it.text = getString(R.string.health) + cardUiModel?.health
+            it.visibility = if(cardUiModel?.health == null) View.GONE else View.VISIBLE
         }
         binding.textFaction.also {
-            it?.text = getString(R.string.faction) + cardUiModel?.faction
-            it?.visibility = if(cardUiModel?.faction == null) View.GONE else View.VISIBLE
+            it.text = getString(R.string.faction) + cardUiModel?.faction
+            it.visibility = if(cardUiModel?.faction == null) View.GONE else View.VISIBLE
         }
 
         showLoading(false)
