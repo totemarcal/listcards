@@ -58,7 +58,8 @@ class CardRepositoryTest {
                     text = ""))
         val response = Response.success(listResponse)
         val listCarros = listResponse.map { it.toCard() }
-        coEvery { eventApi.getHeros() } returns response
+        coEvery { eventApi.getHeros("27067eb6f3msh4f6bcd9efc25e3ap171c05jsnce11ef074b32",
+            "omgvamp-hearthstone-v1.p.rapidapi.com") } returns response
         //act
         val result = rep.getHeros()
         //assert
@@ -70,7 +71,8 @@ class CardRepositoryTest {
     fun test404PegarListaCarros () = runBlocking {
         // arrange
         every { responseEvent.isSuccessful } returns false
-        coEvery { eventApi.getHeros() } returns Response.error(404, ResponseBody.create(null,""))
+        coEvery { eventApi.getHeros("27067eb6f3msh4f6bcd9efc25e3ap171c05jsnce11ef074b32",
+            "omgvamp-hearthstone-v1.p.rapidapi.com") } returns Response.error(404, ResponseBody.create(null,""))
         //act
         val result = rep.getHeros()
         //assert
@@ -82,7 +84,8 @@ class CardRepositoryTest {
     fun test500PegarListaCarros () = runBlocking {
         // arrange
         every { responseEvent.isSuccessful } returns false
-        coEvery { eventApi.getHeros() } returns Response.error(500, ResponseBody.create(null,""))
+        coEvery { eventApi.getHeros("27067eb6f3msh4f6bcd9efc25e3ap171c05jsnce11ef074b32",
+            "omgvamp-hearthstone-v1.p.rapidapi.com") } returns Response.error(500, ResponseBody.create(null,""))
         //act
         val result = rep.getHeros()
         //assert

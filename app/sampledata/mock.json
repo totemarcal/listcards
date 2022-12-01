@@ -1,0 +1,43 @@
+{
+"data" : [
+        {"1595": {
+        "cardId": "TB_BaconShop_HERO_21",
+        "dbfId":58021,
+        "name":"The Great Akazamzarak",
+        "cardSet":"Battlegrounds",
+        "type":"Hero",
+        "faction":"Neutral",
+        "health":40,
+        "artist":"Ivan Fomin",
+        "playerClass":"Neutral",
+        "img":"https://d15f34w2p8l1cc.cloudfront.net/hearthstone/ddae2e64c71aeaa1369d68e41de62b976c6ef599191ca163de06b4cc2f5c39a4.png",
+        "imgGold":"https://d15f34w2p8l1cc.cloudfront.net/hearthstone/9923aba2a5f94892701f761e3e076cf0ace38c264554979750199c2323b8a509.png",
+        "locale":"enUS"},
+        "1596": {
+          "cardId": "TB_BaconShop_HERO_21",
+          "dbfId":58021,
+          "name":"The Great Akazamzarak",
+          "cardSet":"Battlegrounds",
+          "type":"Hero",
+          "faction":"Neutral",
+          "health":40,
+          "artist":"Ivan Fomin",
+          "playerClass":"Neutral",
+          "img":"https://d15f34w2p8l1cc.cloudfront.net/hearthstone/ddae2e64c71aeaa1369d68e41de62b976c6ef599191ca163de06b4cc2f5c39a4.png",
+          "imgGold":"https://d15f34w2p8l1cc.cloudfront.net/hearthstone/9923aba2a5f94892701f761e3e076cf0ace38c264554979750199c2323b8a509.png",
+          "locale":"enUS"},
+        "1597": {
+          "cardId": "TB_BaconShop_HERO_21",
+          "dbfId":58021,
+          "name":"The Great Akazamzarak",
+          "cardSet":"Battlegrounds",
+          "type":"Hero",
+          "faction":"Neutral",
+          "health":40,
+          "artist":"Ivan Fomin",
+          "playerClass":"Neutral",
+          "img":"https://d15f34w2p8l1cc.cloudfront.net/hearthstone/ddae2e64c71aeaa1369d68e41de62b976c6ef599191ca163de06b4cc2f5c39a4.png",
+          "imgGold":"https://d15f34w2p8l1cc.cloudfront.net/hearthstone/9923aba2a5f94892701f761e3e076cf0ace38c264554979750199c2323b8a509.png",
+          "locale":"enUS"}
+  }
+]}

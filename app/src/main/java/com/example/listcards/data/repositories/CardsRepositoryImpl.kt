@@ -14,7 +14,8 @@ import com.example.listcards.helper.network.parse
 class CardsRepositoryImpl (private val api: CardsApi) : CardsRepository {
 
     override suspend fun getHeros(): ResultX<List<Cards>> {
-        val response = api.getHeros().parse()
+        val response = api.getHeros("27067eb6f3msh4f6bcd9efc25e3ap171c05jsnce11ef074b32",
+            "omgvamp-hearthstone-v1.p.rapidapi.com").parse()
 
         return when (response) {
             is ApiResponse.Success -> {

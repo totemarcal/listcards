@@ -5,8 +5,12 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.core.os.bundleOf
 import androidx.fragment.app.Fragment
+import androidx.navigation.Navigation.findNavController
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.listcards.R
 import com.example.listcards.presenter.adapter.CardsAdapter
 import com.example.listcards.presenter.adapter.OnCLickEvent
 import com.example.listcards.databinding.FragmentFirstBinding
@@ -72,14 +76,14 @@ class FirstFragment : Fragment(), OnCLickEvent {
         recycler.visibility = if(show) View.GONE else View.VISIBLE
     }
 
-    private fun updateEvents(events: List<CardsUiModel>) {
-        recycler.adapter = CardsAdapter(events = events,this)
+    private fun updateEvents(cards: List<CardsUiModel>) {
+        recycler.adapter = CardsAdapter(cards = cards,this)
         recycler.layoutManager = LinearLayoutManager(context)
     }
 
-    override fun onClickEvent(eventUiModel: CardsUiModel) {
-        /*val bundle = bundleOf("id" to eventUiModel.id)
-        findNavController().navigate(R.id.action_FirstFragment_to_SecondFragment, bundle)*/
+    override fun onClickEvent(cardUiModel: CardsUiModel) {
+        val bundle = bundleOf("cardUiModel" to cardUiModel)
+        findNavController().navigate(R.id.action_FirstFragment_to_SecondFragment, bundle)
     }
 
     override fun onDestroyView() {

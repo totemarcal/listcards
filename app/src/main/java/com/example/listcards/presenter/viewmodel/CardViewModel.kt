@@ -19,6 +19,7 @@ class CardViewModel(
 ) : BaseViewModel<CardIntent, CardAction, CardState>()  {
 
     val liveData: LiveData<CardState> get() = mState
+    var id: String = ""
 
     override fun intentToAction(intent: CardIntent): CardAction {
         return when (intent) {
@@ -48,7 +49,7 @@ class CardViewModel(
                     is ResultX.Success -> {
                         mState.value = CardState.ResultAllCards(result.value.map { event ->
                             event.toUiModel()
-                        })
+                        }.filter { !it.img.isNullOrBlank() })
                     }
                     is ResultX.Failure -> {
                         mState.value = CardState.Error(result.error.toString(),result.error)

@@ -20,8 +20,6 @@ val mainModule = module {
 
     single { GetCard(get()) }
 
-    single<NetworkService> { NetworkServiceImpl() }
-
     factory { CardViewModel(get(), get()) }
 
 }

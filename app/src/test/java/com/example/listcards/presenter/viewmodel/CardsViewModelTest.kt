@@ -3,13 +3,16 @@ package com.example.listcards.presenter.viewmodel
 import android.arch.core.executor.testing.InstantTaskExecutorRule
 import androidx.lifecycle.Observer
 import com.example.listcards.ListCardApplication
+import com.example.listcards.core.instantLiveDataAndCoroutinesRules
 import com.example.listcards.data.exception.GetCardException
 import com.example.listcards.data.model.CardsResponse
 import com.example.listcards.data.model.toCard
 import com.example.listcards.domain.model.Cards
+import com.example.listcards.domain.repositories.CardsRepository
 import com.example.listcards.domain.usecases.GetCard
 import com.example.listcards.helper.ResultX
 import com.example.listcards.helper.network.NetworkService
+import com.example.listcards.presenter.features.card.CardIntent
 import com.example.listcards.presenter.features.card.CardState
 import com.example.listcards.presenter.model.toUiModel
 import com.example.listcards.utils.MainCoroutineRule
@@ -23,26 +26,29 @@ import org.junit.After
 import org.junit.Before
 import org.junit.Rule
 import org.junit.Test
+import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class CardsViewModelTest {
     private lateinit var viewmodel: CardViewModel
     private lateinit var getCardUseCaseMock: GetCard
     private lateinit var networkService: NetworkService
     private lateinit var cardApplication: ListCardApplication
+    private lateinit var mockRepository: CardsRepository
+
 
     @ExperimentalCoroutinesApi
     @get:Rule
-    val coroutineRule = MainCoroutineRule()
+    val archRule = InstantTaskExecutorRule()
 
-    @Rule
-    @JvmField
-    val rule = InstantTaskExecutorRule()
+    @get:Rule
+    val rule = instantLiveDataAndCoroutinesRules
 
     private lateinit var observer: Observer<CardState>
 
     @Before
     fun setup() {
-        getCardUseCaseMock = mockk()
+        mockRepository = mockk()
+        getCardUseCaseMock = GetCard(mockRepository)
         cardApplication = mockk()
         networkService = mockk()
         viewmodel = CardViewModel(getCardUseCaseMock, networkService)
@@ -83,10 +89,9 @@ class CardsViewModelTest {
         every { observer.onChanged(any()) }.returns(Unit)
         every { networkService.isNetworkAvailable() }.returns(true)
         coEvery { getCardUseCaseMock.invoke() } returns result
-        viewmodel.liveData.observeForever(observer)
 
-        // Invoke
-        runBlocking { viewmodel.fetchCards() }
+        viewmodel.liveData.observeForever(observer)
+        viewmodel.dispatchIntent(CardIntent.LoadAllCards)
 
         // Verify
         verifyOrder {
@@ -122,7 +127,6 @@ class CardsViewModelTest {
     fun testNetworkError() {
         every { observer.onChanged(any()) }.returns(Unit)
         every { networkService.isNetworkAvailable() }.returns(false)
-        viewmodel.liveData.observeForever(observer)
         runBlocking { viewmodel.fetchCards() }
         verifyOrder {
             observer.onChanged(CardState.Error("Internet indisponível"))

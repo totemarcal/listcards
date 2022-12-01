@@ -8,6 +8,7 @@ import com.example.listcards.R
 import com.example.listcards.presenter.model.CardsUiModel
 
 import com.squareup.picasso.Picasso
+import kotlinx.android.synthetic.main.fragment_second.view.*
 import kotlinx.android.synthetic.main.item_event.view.*
 
 class CardsAdapter(
@@ -31,7 +32,8 @@ class CardsAdapter(
         val card = cards[position]
 
         holder.itemView.apply {
-            tvTitle.text = card.cardId +" - "+ card.text
+            tvTitle.text = card.name
+            tvDetails.text = card.cardSet
             Picasso.get().load(card.img).into(imgEvent)
             clRoot.setOnClickListener { onCLickEvent.onClickEvent(card) }
         }

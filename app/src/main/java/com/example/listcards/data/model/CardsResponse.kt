@@ -3,22 +3,22 @@ package com.example.listcards.data.model
 import com.example.listcards.domain.model.Cards
 
 data class CardsResponse (
-    val cardId : String,
-    val dbfId : Int,
-    val name : String,
-    val cardSet : String,
-    val type : String,
-    val faction : String,
-    val rarity : String,
-    val health : Int,
-    val text : String,
-    val cost : Int,
-    val attack : Int,
-    val artist : String,
-    val playerClass : String,
-    val img : String,
-    val imgGold : String,
-    val locale : String
+    val cardId : String?,
+    val dbfId : Int?,
+    val name : String?,
+    val cardSet : String?,
+    val type : String?,
+    val faction : String?,
+    val rarity : String?,
+    val health : Int?,
+    val text : String?,
+    val cost : Int?,
+    val attack : Int?,
+    val artist : String?,
+    val playerClass : String?,
+    val img : String?,
+    val imgGold : String?,
+    val locale : String?
 )
 fun CardsResponse.toCard() = Cards(
     cardId = this.cardId,

@@ -9,20 +9,18 @@ import kotlinx.coroutines.test.setMain
 import org.junit.rules.TestWatcher
 import org.junit.runner.Description
 
-//Referencia
-//https://developer.android.com/codelabs/advanced-android-kotlin-training-testing-survey#3
-@ExperimentalCoroutinesApi
-class MainCoroutineRule (
-    private val dispatcher: TestCoroutineDispatcher = TestCoroutineDispatcher()
-) : TestWatcher(), TestCoroutineScope by TestCoroutineScope(dispatcher) {
-    override fun starting(description: Description?) {
+class MainCoroutineRule : TestWatcher() {
+
+    @OptIn(ExperimentalCoroutinesApi::class)
+    override fun starting(description: Description) {
         super.starting(description)
-        Dispatchers.setMain(dispatcher)
+        Dispatchers.setMain(Dispatchers.Unconfined)
     }
 
-    override fun finished(description: Description?) {
+    @OptIn(ExperimentalCoroutinesApi::class)
+    override fun finished(description: Description) {
         super.finished(description)
-        cleanupTestCoroutines()
         Dispatchers.resetMain()
     }
+
 }
