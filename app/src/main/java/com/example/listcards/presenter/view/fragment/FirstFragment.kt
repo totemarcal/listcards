@@ -18,7 +18,6 @@ import com.example.listcards.presenter.features.card.CardIntent
 import com.example.listcards.presenter.features.card.CardState
 import com.example.listcards.presenter.model.CardsUiModel
 import com.example.listcards.presenter.viewmodel.CardViewModel
-import kotlinx.android.synthetic.main.fragment_first.*
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 
@@ -72,13 +71,13 @@ class FirstFragment : Fragment(), OnCLickEvent {
     }
 
     private fun showLoading(show: Boolean) {
-        progressBar.visibility = if(show) View.VISIBLE else View.GONE
-        recycler.visibility = if(show) View.GONE else View.VISIBLE
+        binding.progressBar.visibility = if(show) View.VISIBLE else View.GONE
+        binding.recycler.visibility = if(show) View.GONE else View.VISIBLE
     }
 
     private fun updateEvents(cards: List<CardsUiModel>) {
-        recycler.adapter = CardsAdapter(cards = cards,this)
-        recycler.layoutManager = LinearLayoutManager(context)
+        binding.recycler.adapter = CardsAdapter(cards = cards,this)
+        binding.recycler.layoutManager = LinearLayoutManager(context)
     }
 
     override fun onClickEvent(cardUiModel: CardsUiModel) {

@@ -1,8 +1,6 @@
 package com.example.listcards.presenter.view.fragment
 
 import android.os.Bundle
-import android.text.Html
-import android.text.Spanned
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -13,9 +11,6 @@ import com.example.listcards.R
 import com.example.listcards.databinding.FragmentSecondBinding
 import com.example.listcards.presenter.model.CardsUiModel
 import com.squareup.picasso.Picasso
-import kotlinx.android.synthetic.main.fragment_first.*
-import kotlinx.android.synthetic.main.fragment_second.*
-import kotlinx.android.synthetic.main.item_event.view.*
 
 /**
  * A simple [Fragment] subclass as the second destination in the navigation.
@@ -48,43 +43,43 @@ class SecondFragment : Fragment() {
     }
 
     private fun showLoading(show: Boolean) {
-        progressBarSec.visibility = if(show) View.VISIBLE else View.GONE
+        binding.progressBarSec?.visibility = if(show) View.VISIBLE else View.GONE
     }
 
     override fun onResume() {
         cardUiModel = arguments?.getSerializable("cardUiModel") as CardsUiModel?
-        Picasso.get().load(cardUiModel?.img).into(img)
-        tvDetails.text = cardUiModel?.name
-        textType.text = "Type: " + cardUiModel?.type
-        textAttack.also {
-            it.text = "Attack: " + cardUiModel?.attack
-            it.visibility = if(cardUiModel?.attack == null) View.GONE else View.VISIBLE
+        Picasso.get().load(cardUiModel?.img).into(binding.img)
+        binding.tvDetails?.text = cardUiModel?.name
+        binding.textType?.text = getString(R.string.type) + cardUiModel?.type
+        binding.textAttack?.also {
+            it?.text = getString(R.string.attack) + cardUiModel?.attack
+            it?.visibility = if(cardUiModel?.attack == null) View.GONE else View.VISIBLE
         }
-        textCardSet.also {
-            it.text = "Card Set: " + cardUiModel?.cardSet
-            it.visibility = if(cardUiModel?.cardSet == null) View.GONE else View.VISIBLE
+        binding.textCardSet.also {
+            it?.text = getString(R.string.cardset) + cardUiModel?.cardSet
+            it?.visibility = if(cardUiModel?.cardSet == null) View.GONE else View.VISIBLE
         }
-        textText.also {
-            it.text = cardUiModel?.text?.let { it2 ->
+        binding.textText.also {
+            it?.text = cardUiModel?.text?.let { it2 ->
                 HtmlCompat.fromHtml(it2, HtmlCompat.FROM_HTML_MODE_LEGACY);
             }
-            it.visibility = if(cardUiModel?.text == null) View.GONE else View.VISIBLE
+            it?.visibility = if(cardUiModel?.text == null) View.GONE else View.VISIBLE
         }
-        textCost.also {
-            it.text = "Cost: " + cardUiModel?.cost
-            it.visibility = if(cardUiModel?.cost == null) View.GONE else View.VISIBLE
+        binding.textCost.also {
+            it?.text = getString(R.string.cost) + cardUiModel?.cost
+            it?.visibility = if(cardUiModel?.cost == null) View.GONE else View.VISIBLE
         }
-        textRarity.also {
-            it.text = "Rarity: " + cardUiModel?.rarity
-            it.visibility = if(cardUiModel?.rarity == null) View.GONE else View.VISIBLE
+        binding.textRarity.also {
+            it?.text = getString(R.string.rarity) + cardUiModel?.rarity
+            it?.visibility = if(cardUiModel?.rarity == null) View.GONE else View.VISIBLE
         }
-        textHealth.also {
-            it.text = "Health: " + cardUiModel?.health
-            it.visibility = if(cardUiModel?.health == null) View.GONE else View.VISIBLE
+        binding.textHealth.also {
+            it?.text = getString(R.string.health) + cardUiModel?.health
+            it?.visibility = if(cardUiModel?.health == null) View.GONE else View.VISIBLE
         }
-        textFaction.also {
-            it.text = "Faction: " + cardUiModel?.faction
-            it.visibility = if(cardUiModel?.faction == null) View.GONE else View.VISIBLE
+        binding.textFaction.also {
+            it?.text = getString(R.string.faction) + cardUiModel?.faction
+            it?.visibility = if(cardUiModel?.faction == null) View.GONE else View.VISIBLE
         }
 
         showLoading(false)
