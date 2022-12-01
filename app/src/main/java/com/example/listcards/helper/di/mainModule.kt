@@ -1,6 +1,6 @@
 package com.example.listcards.helper.di
 
-import com.example.cleanmvvmapp.helper.network.RetrofitService
+import com.example.listcards.helper.network.RetrofitService
 import com.example.listcards.data.api.CardsApi
 import com.example.listcards.data.repositories.CardsRepositoryImpl
 import com.example.listcards.domain.repositories.CardsRepository

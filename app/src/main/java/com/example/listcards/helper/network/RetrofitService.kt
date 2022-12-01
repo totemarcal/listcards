@@ -1,6 +1,5 @@
-package com.example.cleanmvvmapp.helper.network
+package com.example.listcards.helper.network
 
-import android.os.Build
 import com.example.listcards.BuildConfig
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
